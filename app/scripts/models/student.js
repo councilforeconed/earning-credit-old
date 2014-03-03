@@ -1,7 +1,6 @@
 (function (EarningCredit) {
   
-  EarningCredit.StudentInformation = Backbone.Model.extend({});
-
-  EarningCredit.StudentInformation = new EarningCredit.StudentInformation();
+  EarningCredit.Student = Backbone.Model.extend({});
+  EarningCredit.Student = new EarningCredit.Student();
   
 })(EarningCredit);

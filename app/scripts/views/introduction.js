@@ -15,8 +15,8 @@
   
     updateFirstName: function () {
       var $input = $('#first-name-input');
-      EarningCredit.StudentInformation.set('firstName', $input.val());
-      if (EarningCredit.StudentInformation.get('firstName')) {
+      EarningCredit.Student.set('firstName', $input.val());
+      if (EarningCredit.Student.get('firstName')) {
         this.$('.continue').attr('disabled', false);
         $input.parent().removeClass('has-error').addClass('has-success');
       } else {
@@ -27,13 +27,13 @@
   
     updateStudentId: function () {
       var $input = $('#student-id-input');
-      EarningCredit.StudentInformation.set('studentId', $input.val());
+      EarningCredit.Student.set('studentId', $input.val());
     },
   
     updateCurrentAge: function () {
       var $input = $('#current-age-input');
       if ($input.val().match(/\d+/) || !$input.val()) {
-        EarningCredit.StudentInformation.set('currentAge', $input.val());
+        EarningCredit.Student.set('currentAge', $input.val());
         $input.parent().removeClass('has-error');
       } else {
         $input.parent().removeClass('has-success').addClass('has-error');
@@ -42,7 +42,7 @@
   
     updateTeacherEmail: function () {
       var $input = $('#teacher-email-input');
-      EarningCredit.StudentInformation.set('teacherEmail', $input.val());
+      EarningCredit.Student.set('teacherEmail', $input.val());
     },
   
     continue: function () {
@@ -52,7 +52,7 @@
         return alert('Please make sure none of the fields have errors.');
       }
     
-      if (!EarningCredit.StudentInformation.get('firstName')) {
+      if (!EarningCredit.Student.get('firstName')) {
         return alert('Make sure you enter your first name.');
       }
     
