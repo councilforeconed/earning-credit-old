@@ -10,3 +10,8 @@ body {
   content: " (You must answer this question.)";
   color: #A94448 !important;
 }
+
+.panel-body, .conclusion .panel-body {
+  text-align: center;
+  font-size: 4rem;
+}

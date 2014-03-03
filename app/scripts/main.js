@@ -103,6 +103,77 @@ EarningCredit.IntroductionView = Backbone.View.extend({
   className: 'introduction',
   
   events: {
+    'keyup #first-name-input': 'updateFirstName',
+    'keyup #student-id-input': 'updateStudentId',
+    'keyup #current-age-input': 'updateCurrentAge',
+    'keyup #teacher-email-input': 'updateTeacherEmail',
+    'click .continue': 'continue',
+    'submit': 'continue'
+  },
+  
+  updateFirstName: function () {
+    var $input = $('#first-name-input');
+    EarningCredit.StudentInformation.set('firstName', $input.val());
+    if (EarningCredit.StudentInformation.get('firstName')) {
+      this.$('.continue').attr('disabled', false);
+      $input.parent().removeClass('has-error').addClass('has-success');
+    } else {
+      this.$('.continue').attr('disabled', true);
+      $input.parent().removeClass('has-success').addClass('has-error');
+    }
+  },
+  
+  updateStudentId: function () {
+    var $input = $('#student-id-input');
+    EarningCredit.StudentInformation.set('studentId', $input.val());
+  },
+  
+  updateCurrentAge: function () {
+    var $input = $('#current-age-input');
+    if ($input.val().match(/\d+/) || !$input.val()) {
+      EarningCredit.StudentInformation.set('currentAge', $input.val());
+      $input.parent().removeClass('has-error');
+    } else {
+      $input.parent().removeClass('has-success').addClass('has-error');
+    }
+  },
+  
+  updateTeacherEmail: function () {
+    var $input = $('#teacher-email-input');
+    EarningCredit.StudentInformation.set('teacherEmail', $input.val());
+  },
+  
+  continue: function () {
+    var view = this;
+    
+    if (this.$('.has-error').length) {
+      return alert('Please make sure none of the fields have errors.');
+    }
+    
+    if (!EarningCredit.StudentInformation.get('firstName')) {
+      return alert('Make sure you enter your first name.');
+    }
+    
+    this.$el.fadeOut('fast', function () {
+      window.scrollTo(0,0);
+      view.trigger('advance');
+      view.$el.remove();
+    });
+    
+  },
+  
+  render: function () {
+    this.$el.html($('#introduction-template').html());
+    return this;
+  }
+  
+});
+
+EarningCredit.LoanSelectionView = Backbone.View.extend({
+  
+  className: 'loan-selection',
+  
+  events: {
     'click .continue': 'continue',
     'submit': 'continue'
   },
@@ -116,33 +187,8 @@ EarningCredit.IntroductionView = Backbone.View.extend({
   },
   
   render: function () {
-    this.$el.append('<p>Introduction</p>');
-    this.$el.append('<button type="button" class="continue btn btn-primary btn-lg btn-block">Begin</button>')
-    return this;
-  }
-  
-});
-
-EarningCredit.LoanSelectionView = Backbone.View.extend({
-  
-  className: 'loan-selection',
-  
-  events: {
-    'click .submit-selection': 'submitSelection',
-    'submit': 'submitSelection'
-  },
-  
-  submitSelection: function () {
-    var view = this;
-    this.$el.fadeOut('fast', function () {
-      window.scrollTo(0,0);
-      view.trigger('advance');
-    });
-  },
-  
-  render: function () {
-    this.$el.append('<p>Car Loan Selection View</p>');
-    this.$el.append('<button type="button" class="submit-selection btn btn-primary btn-lg btn-block">Select Car Loan</button>');
+    this.$el.html($('#loan-selection-template').html());
+    this.$('.current-credit-score .panel-body').text(EarningCredit.preSurvey.points());
     return this;
   }
   
@@ -152,11 +198,24 @@ EarningCredit.ConclusionView = Backbone.View.extend({
   
   className: 'conclusion',
   
+  events: {
+    'keyup #teacher-email-input': 'updateTeacherEmail',
+  },
+  
+  updateTeacherEmail: function () {
+    var $input = this.$('#teacher-email-input');
+    EarningCredit.StudentInformation.set('teacherEmail', $input.val());
+  },
+  
   render: function () {
-    this.$el.append('<p>Conclusion</p>');
+    this.$el.html($('#conclusion-template').html());
+    this.$('.current-credit-score .panel-body').text(EarningCredit.preSurvey.points());
+    this.$('.car-loan .panel-body').text(EarningCredit.InterestRate() + '%');
+    this.$('.future-credit-score .panel-body').text(EarningCredit.postSurvey.points());
+    this.$('#teacher-email-input').val(EarningCredit.StudentInformation.get('teacherEmail'));
     return this;
   }
-  
+
 });
 
 EarningCredit.InterestRate = function (score) {
@@ -175,13 +234,16 @@ EarningCredit.InterestRate = function (score) {
   return 20;
 };
 
+EarningCredit.StudentInformation = Backbone.Model.extend({});
+
+EarningCredit.StudentInformation = new EarningCredit.StudentInformation();
+
 EarningCredit.loadView = function (view, next) {
   view.on('advance', next);
   $('.content').append(view.render().el);
 };
 
 EarningCredit.init = function () {
-  
   $.getJSON('./surveys/pre-survey.json').done(function (response) {
     EarningCredit.preSurvey = new EarningCredit.Survey(response);
     
@@ -201,9 +263,7 @@ EarningCredit.init = function () {
           });
         });
       });
-      
     });
-    
   });
 };
 

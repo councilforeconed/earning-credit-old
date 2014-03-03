@@ -24,12 +24,102 @@
         <![endif]-->
             
         <div class="container">
-            
             <div class="row">
                 <div class="content col-md-12"></div>
             </div>
-            
         </div>
+        
+        <!-- templates -->
+        
+        <script type="text/template" id="introduction-template">
+        <form class="form" role="form">
+          <div class="form-group">
+            <label for="first-name-input">First Name</label>
+            <input type="text" class="form-control" id="first-name-input" placeholder="First Name">
+          </div>
+          <div class="form-group">
+            <label for="student-id-input">Student ID Number</label>
+            <input type="text" class="form-control" id="student-id-input" placeholder="Student ID Number">
+          </div>
+          <div class="form-group">
+            <label for="age-input">Current Age</label>
+            <input type="text" class="form-control" id="current-age-input" placeholder="Current Age">
+          </div>
+          <div class="form-group">
+            <label for="teacher-email-input">Teacher Email Address</label>
+            <input type="email" class="form-control" id="teacher-email-input" placeholder="Teacher's Email">
+          </div>
+          <button type="button" class="continue btn btn-primary btn-lg btn-block" disabled>Begin</button>
+        </form>
+        </script>
+        
+        <script id="loan-selection-template" type="text/template">
+        <div class="row">
+            <div class="col-md-9">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="col-md-3 current-credit-score">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Current Credit Score</h3>
+                  </div>
+                  <div class="panel-body">
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button type="button" class="continue btn btn-primary btn-lg btn-block">Select Car Loan</button>
+            </div>
+        </div>
+        </script>
+        
+        <script id="conclusion-template" type="text/template">
+        <div class="row">
+            <div class="col-md-4 current-credit-score">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Current Credit Score</h3>
+                  </div>
+                  <div class="panel-body">
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-4 car-loan">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Interest Rate</h3>
+                  </div>
+                  <div class="panel-body">
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-4 future-credit-score">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Future Credit Score</h3>
+                  </div>
+                  <div class="panel-body">
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                  <label for="teacher-email-input">Teacher Email Address</label>
+                  <input type="email" class="form-control" id="teacher-email-input" placeholder="Teacher's Email">
+                </div>
+                <button type="button" class="continue btn btn-primary btn-block" disabled>Send Results</button>
+            </div>
+        </div>
+        </script>
+        
+        <!-- /templates -->
 
         <!-- build:js scripts/vendor.js -->
         <script src="bower_components/jquery/dist/jquery.js"></script>
