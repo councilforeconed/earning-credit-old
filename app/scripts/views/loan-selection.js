@@ -20,6 +20,7 @@
     render: function () {
       this.$el.html($('#loan-selection-template').html());
       this.$('.current-credit-score .panel-body').text(EarningCredit.preSurvey.points());
+      this.$('.car-loan-list').append(EarningCredit.CarListView.render().el);
       return this;
     }
   
