@@ -1,8 +1,12 @@
 body {
-    background: #fafafa;
+  margin: 40px auto;
 }
 
-.hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
+.question {
+  margin-bottom: 4em;
+}
+
+.question.has-error legend:after {
+  content: " (You must answer this question.)";
+  color: #A94448 !important;
 }
