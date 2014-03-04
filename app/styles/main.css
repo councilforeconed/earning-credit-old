@@ -16,7 +16,19 @@ body {
   font-size: 4rem;
 }
 
-tr.loan-information.disabled td {
+tr.loan-information.disabled {
   color: #999;
-  background-color: #EFEFEF;
+  background-color: #F7F7F7;
+}
+
+tr.loan-information.disabled td.loan-credit-score:after {
+  content: " (Ineligible)"
+}
+
+tr.overbudget {
+  background-color: #FFECEC;
+}
+
+tr.overbudget td.loan-monthly-price:after {
+  content: " (Overbudget)";
 }

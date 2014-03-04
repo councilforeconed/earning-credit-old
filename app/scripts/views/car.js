@@ -31,17 +31,22 @@
 
         var $loan = $('<tr class="loan-information">' +
                         '<td><div class="radio"><input type="radio" name="loan" value="' + loanInformationEncoded + '"></div></td>' +
-                        '<td>$' + numeral(basePrice).format('0,0') + '</td>' +
-                        '<td>' + loanTermInMonths + ' months</td>' +
-                        '<td>' + rate + '%</td>' +
-                        '<td>' + creditScore + '</td>' +
-                        '<td>$' + numeral(totalCost).format('0,0') + '</td>' +
-                        '<td>$' + numeral(monthlyPrice).format('0,0') + '</td>' +
+                        '<td class="loan-base-price">$' + numeral(basePrice).format('0,0') + '</td>' +
+                        '<td class="loan-loan-term">' + loanTermInMonths + ' months</td>' +
+                        '<td class="loan-interest-rate">' + rate + '%</td>' +
+                        '<td class="loan-credit-score">' + creditScore + '</td>' +
+                        '<td class="loan-total-cost">$' + numeral(totalCost).format('0,0') + '</td>' +
+                        '<td class="loan-monthly-price">$' + numeral(monthlyPrice).format('0,0') + '</td>' +
                       '</tr>');
 
         if (EarningCredit.preSurvey.points() < creditScore) {
           $loan.find('input[type=radio]').attr('disabled', true);
           $loan.addClass('disabled');
+        }
+
+        if (monthlyPrice > 600) {
+          $loan.find('input[type=radio]').attr('disabled', true);
+          $loan.addClass('overbudget');
         }
 
         $loans.append($loan);
