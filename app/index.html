@@ -22,15 +22,15 @@
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-            
+
         <div class="container">
             <div class="row">
                 <div class="content col-md-12"></div>
             </div>
         </div>
-        
+
         <!-- templates -->
-        
+
         <script type="text/template" id="introduction-template">
         <form class="form" role="form">
           <div class="form-group">
@@ -52,7 +52,7 @@
           <button type="button" class="continue btn btn-primary btn-lg btn-block" disabled>Begin</button>
         </form>
         </script>
-        
+
         <script id="loan-selection-template" type="text/template">
         <div class="row">
             <div class="col-md-9">
@@ -75,7 +75,7 @@
             </div>
         </div>
         </script>
-        
+
         <script id="car-template" type="text/template">
         <div class="panel panel-default car">
             <div class="panel-heading">
@@ -83,7 +83,7 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-3 price">
+                    <div class="col-md-2 price">
                         <div class="price">
                             <h5>Price</h5>
                             <p><% print('$ ' + numeral(price).format('0,0') ); %></p>
@@ -93,10 +93,11 @@
                             <p><%= description %></p>
                         </div>
                     </div>
-                    <div class="col-md-9 loans">
+                    <div class="col-md-10 loans">
                         <table class="table">
                             <thead>
                                 <tr>
+                                    <th>Select</th>
                                     <th>Base Price</th>
                                     <th>Number of Months</th>
                                     <th>Interest Rate</th>
@@ -113,7 +114,7 @@
             </div>
         </div>
         </script>
-        
+
         <script id="conclusion-template" type="text/template">
         <div class="row">
             <div class="col-md-4 current-credit-score">
@@ -157,7 +158,7 @@
             </div>
         </div>
         </script>
-        
+
         <!-- /templates -->
 
         <!-- build:js scripts/vendor.js -->
