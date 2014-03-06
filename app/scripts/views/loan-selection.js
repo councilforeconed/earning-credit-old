@@ -1,14 +1,14 @@
 (function (EarningCredit) {
-  
+  'use strict';
   EarningCredit.LoanSelectionView = Backbone.View.extend({
-  
+
     className: 'loan-selection',
-  
+
     events: {
       'click .continue': 'continue',
       'submit': 'continue'
     },
-  
+
     continue: function () {
       var view = this;
       this.$el.fadeOut('fast', function () {
@@ -16,14 +16,14 @@
         view.trigger('advance');
       });
     },
-  
+
     render: function () {
       this.$el.html($('#loan-selection-template').html());
       this.$('.current-credit-score .panel-body').text(EarningCredit.preSurvey.points());
       this.$('.car-loan-list').append(EarningCredit.CarListView.render().el);
       return this;
     }
-  
+
   });
-  
+
 })(EarningCredit);
