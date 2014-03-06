@@ -1,7 +1,7 @@
 /*global define*/
 
 define([
-  'collection/survey'
+  'collections/survey'
 ], function (SurveyCollection) {
   'use strict';
 

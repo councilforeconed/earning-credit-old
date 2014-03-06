@@ -7,9 +7,9 @@ define([
 ], function (_, Backbone, CarModel) {
   'use strict';
 
-  var CarsCollection = Backbone.Collection.extend({
-    model: CarsModel
+  var CarCollection = Backbone.Collection.extend({
+    model: CarModel
   });
 
-  return CarsCollection;
+  return CarCollection;
 });

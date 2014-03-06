@@ -40,10 +40,6 @@ module.exports = function (grunt) {
         files: ['test/spec/{,*/}*.coffee'],
         tasks: ['coffee:test']
       },
-      compass: {
-        files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
-        tasks: ['compass']
-      },
       livereload: {
         options: {
           livereload: LIVERELOAD_PORT
@@ -162,47 +158,12 @@ module.exports = function (grunt) {
         }]
       }
     },
-    compass: {
-      options: {
-        sassDir: '<%= yeoman.app %>/styles',
-        cssDir: '.tmp/styles',
-        imagesDir: '<%= yeoman.app %>/images',
-        javascriptsDir: '<%= yeoman.app %>/scripts',
-        fontsDir: '<%= yeoman.app %>/styles/fonts',
-        importPath: '<%= yeoman.app %>/bower_components',
-        relativeAssets: true
-      },
-      dist: {},
-      server: {
-        options: {
-          debugInfo: true
-        }
-      }
-    },
-    requirejs: {
-      dist: {
-        // Options: https://github.com/jrburke/r.js/blob/master/build/example.build.js
-        options: {
-          baseUrl: '<%= yeoman.app %>/scripts',
-          optimize: 'none',
-          paths: {
-            'templates': '../../.tmp/scripts/templates',
-            'jquery': '../../app/bower_components/jquery/jquery',
-            'underscore': '../../app/bower_components/underscore/underscore',
-            'backbone': '../../app/bower_components/backbone/backbone'
-          },
-          // TODO: Figure out how to make sourcemaps work with grunt-usemin
-          // https://github.com/yeoman/grunt-usemin/issues/30
-          //generateSourceMaps: true,
-          // required to support SourceMaps
-          // http://requirejs.org/docs/errors.html#sourcemapcomments
-          preserveLicenseComments: false,
-          useStrict: true,
-          wrap: true
-          //uglify2: {} // https://github.com/mishoo/UglifyJS2
-        }
-      }
-    },
+    // not enabled since usemin task does concat and uglify
+    // check index.html to edit your build targets
+    // enable this task if you prefer defining your build targets here
+    /*uglify: {
+      dist: {}
+    },*/
     useminPrepare: {
       html: '<%= yeoman.app %>/index.html',
       options: {
@@ -230,8 +191,9 @@ module.exports = function (grunt) {
       dist: {
         files: {
           '<%= yeoman.dist %>/styles/main.css': [
+            'bower_components/bootstrap/dist/css/bootstrap.min.css',
             '.tmp/styles/{,*/}*.css',
-            '<%= yeoman.app %>/styles/{,*/}*.css'
+            '<%= yeoman.app %>/styles/{,*/}*.css',
           ]
         }
       }
@@ -269,20 +231,11 @@ module.exports = function (grunt) {
             '.htaccess',
             'images/{,*/}*.{webp,gif}',
             'styles/fonts/{,*/}*.*',
-            'bower_components/sass-bootstrap/fonts/*.*'
           ]
         }]
       }
     },
-    bower: {
-      all: {
-        rjsConfig: '<%= yeoman.app %>/scripts/main.js'
-      }
-    },
     jst: {
-      options: {
-        amd: true
-      },
       compile: {
         files: {
           '.tmp/scripts/templates.js': ['<%= yeoman.app %>/scripts/templates/*.ejs']
@@ -297,7 +250,6 @@ module.exports = function (grunt) {
             '<%= yeoman.dist %>/styles/{,*/}*.css',
             '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
             '/styles/fonts/{,*/}*.*',
-            'bower_components/sass-bootstrap/fonts/*.*'
           ]
         }
       }
@@ -306,11 +258,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('createDefaultTemplate', function () {
     grunt.file.write('.tmp/scripts/templates.js', 'this.JST = this.JST || {};');
-  });
-
-  grunt.registerTask('server', function () {
-    grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-    grunt.task.run(['serve:' + target]);
   });
 
   grunt.registerTask('serve', function (target) {
@@ -324,7 +271,6 @@ module.exports = function (grunt) {
         'coffee',
         'createDefaultTemplate',
         'jst',
-        'compass:server',
         'connect:test',
         'open:test',
         'watch:livereload'
@@ -336,7 +282,6 @@ module.exports = function (grunt) {
       'coffee:dist',
       'createDefaultTemplate',
       'jst',
-      'compass:server',
       'connect:livereload',
       'open:server',
       'watch'
@@ -350,7 +295,6 @@ module.exports = function (grunt) {
         'coffee',
         'createDefaultTemplate',
         'jst',
-        'compass',
         'connect:test',
         'mocha',
         'watch:test'
@@ -370,9 +314,7 @@ module.exports = function (grunt) {
     'coffee',
     'createDefaultTemplate',
     'jst',
-    'compass:dist',
     'useminPrepare',
-    'requirejs',
     'imagemin',
     'htmlmin',
     'concat',

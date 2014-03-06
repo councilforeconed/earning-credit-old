@@ -1,2 +1,9 @@
-<p>Your content here.</p>
-
+<legend><%= question %></legend>
+<% answers.forEach(function (answer) { %>
+	<div class="radio">
+		<label>
+			<input type="radio" name="<%= number %>" value="<%= answer.value %>">
+			<%= answer.text %>
+		</label>
+	</div>
+<% }); %>
