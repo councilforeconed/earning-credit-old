@@ -1,29 +1,16 @@
-(function (EarningCredit) {
+/*global define*/
+
+define([
+  'jquery',
+  'underscore',
+  'backbone',
+  'templates'
+], function ($, _, Backbone, JST) {
   'use strict';
-  EarningCredit.LoanSelectionView = Backbone.View.extend({
 
-    className: 'loan-selection',
-
-    events: {
-      'click .continue': 'continue',
-      'submit': 'continue'
-    },
-
-    continue: function () {
-      var view = this;
-      this.$el.fadeOut('fast', function () {
-        window.scrollTo(0,0);
-        view.trigger('advance');
-      });
-    },
-
-    render: function () {
-      this.$el.html($('#loan-selection-template').html());
-      this.$('.current-credit-score .panel-body').text(EarningCredit.preSurvey.points());
-      this.$('.car-loan-list').append(EarningCredit.CarListView.render().el);
-      return this;
-    }
-
+  var LoanSelectionView = Backbone.View.extend({
+    template: JST['app/scripts/templates/loan-selection.ejs']
   });
 
-})(EarningCredit);
+  return LoanSelectionView;
+});

@@ -1,27 +1,33 @@
-/*global EarningCredit, $*/
+/*global require*/
+'use strict';
 
-EarningCredit.loadView = function (view, next) {
-  view.on('advance', next);
-  $('.content').append(view.render().el);
-};
+require.config({
+  shim: {
+    underscore: {
+      exports: '_'
+    },
+    backbone: {
+      deps: [
+        'underscore',
+        'jquery'
+      ],
+      exports: 'Backbone'
+    },
+    bootstrap: {
+      deps: ['jquery'],
+      exports: 'jquery'
+    }
+  },
+  paths: {
+    jquery: '../bower_components/jquery/jquery',
+    backbone: '../bower_components/backbone/backbone',
+    underscore: '../bower_components/underscore/underscore',
+    bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap'
+  }
+});
 
-EarningCredit.init = function () {
-  EarningCredit.loadView(new EarningCredit.IntroductionView(), function () {
-    var survey = new EarningCredit.SurveyView({ collection: EarningCredit.preSurvey });
-    EarningCredit.loadView(survey, function () {
-      var view = new EarningCredit.LoanSelectionView();
-      EarningCredit.loadView(view, function () {
-        var survey = new EarningCredit.SurveyView({ collection: EarningCredit.postSurvey });
-        EarningCredit.loadView(survey, function () {
-          var view = new EarningCredit.ConclusionView();
-          EarningCredit.loadView(view);
-        });
-      });
-    });
-  });
-};
-
-$(document).ready(function () {
-  'use strict';
-  EarningCredit.init();
+require([
+  'backbone'
+], function (Backbone) {
+  Backbone.history.start();
 });

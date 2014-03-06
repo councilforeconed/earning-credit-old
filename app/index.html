@@ -1,185 +1,98 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if lt IE 7]>    <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>     <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>     <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Earning Credit</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-        <!-- build:css(.tmp) styles/main.css -->
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="styles/main.css">
-        <!-- endbuild -->
-        <!-- build:js scripts/vendor/modernizr.js -->
-        <script src="bower_components/modernizr/modernizr.js"></script>
-        <!-- endbuild -->
-    </head>
-    <body>
-        <!--[if lt IE 10]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>earning credit</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
 
-        <div class="container">
-            <div class="row">
-                <div class="content col-md-12"></div>
-            </div>
+
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <h3 class="text-muted">earning credit</h3>
+      </div>
+
+      <div class="jumbotron">
+        <h1>'Allo, 'Allo!</h1>
+        <p class="lead">Always a pleasure scaffolding your apps.</p>
+        <p><a class="btn btn-lg btn-success" href="#">Splendid!</a></p>
+      </div>
+
+      <div class="row text-left">
+        <div class="col-md-offset-4">
+          <h2>Now Try,</h2>
+          <h4><b>yo backbone:router</b> &lt;router&gt;</h4>
+          <h4><b>yo backbone:collection</b> &lt;collection&gt;</h4>
+          <h4><b>yo backbone:model </b> &lt;model&gt;</h4>
+          <h4><b>yo backbone:view </b> &lt;view&gt;</h4>
         </div>
+      </div>
 
-        <!-- templates -->
+      <div class="row marketing">
+        <div class="col-lg-6">
+          <h4>HTML5 Boilerplate</h4>
+          <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>
 
-        <script type="text/template" id="introduction-template">
-        <form class="form" role="form">
-          <div class="form-group">
-            <label for="first-name-input">First Name</label>
-            <input type="text" class="form-control" id="first-name-input" placeholder="First Name">
-          </div>
-          <div class="form-group">
-            <label for="student-id-input">Student ID Number</label>
-            <input type="text" class="form-control" id="student-id-input" placeholder="Student ID Number">
-          </div>
-          <button type="button" class="continue btn btn-primary btn-lg btn-block" disabled>Begin</button>
-        </form>
-        </script>
+          <h4>Bootstrap</h4>
+          <p>Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
 
-        <script id="loan-selection-template" type="text/template">
-        <div class="row">
-            <div class="col-md-9">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <div class="car-loan-list"></div>
-            </div>
-            <div class="col-md-3 current-credit-score">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Current Credit Score</h3>
-                  </div>
-                  <div class="panel-body">
-                  </div>
-                </div>
-            </div>
+          <h4>Modernizr</h4>
+          <p>Modernizr is an open-source JavaScript library that helps you build the next generation of HTML5 and CSS3-powered websites.</p>
+
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <button type="button" class="continue btn btn-primary btn-lg btn-block">Select Car Loan</button>
-            </div>
+        <div class="col-lg-6">
+          <h4>Backbone.js</h4>
+          <p>Backbone.js gives structure to web applications by providing models, collections, views and connects it all to your existing API over a RESTful JSON interface.</p>
+
+          <h4>Underscore.js</h4>
+          <p>Underscore.js is a utility-belt library for JavaScript that provides a lot of the functional programming support</p>
+
+          <h4>RequireJS</h4>
+          <p>RequireJS is a JavaScript file and module loader. It is optimized for in-browser use, but it can be used in other JavaScript environments, like Rhino and Node.</p>
+
         </div>
-        </script>
+      </div>
 
-        <script id="car-template" type="text/template">
-        <div class="panel panel-default car">
-            <div class="panel-heading">
-                <h2 class="panel-title car-model"><%= name %></h2>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-2 price">
-                        <div class="price">
-                            <h5>Price</h5>
-                            <p><% print('$ ' + numeral(price).format('0,0') ); %></p>
-                        </div>
-                        <div class="description">
-                            <h5>Description</h5>
-                            <p><%= description %></p>
-                        </div>
-                    </div>
-                    <div class="col-md-10 loans">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Select</th>
-                                    <th>Base Price</th>
-                                    <th>Number of Months</th>
-                                    <th>Interest Rate</th>
-                                    <th>Minimum Credit Score</th>
-                                    <th>Total Cost</th>
-                                    <th>Monthly Payments</th>
-                                </tr>
-                            </thead>
-                            <tbody class="loan-list">
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </script>
+      <div class="footer">
+        <p>♥ from the Yeoman team</p>
+      </div>
 
-        <script id="conclusion-template" type="text/template">
-        <div class="row">
-            <div class="col-md-4 current-credit-score">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Current Credit Score</h3>
-                  </div>
-                  <div class="panel-body">
-                  </div>
-                </div>
-            </div>
-            <div class="col-md-4 car-loan">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Interest Rate</h3>
-                  </div>
-                  <div class="panel-body">
-                  </div>
-                </div>
-            </div>
-            <div class="col-md-4 future-credit-score">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Future Credit Score</h3>
-                  </div>
-                  <div class="panel-body">
-                  </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-9">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                  <label for="teacher-email-input">Teacher Email Address</label>
-                  <input type="email" class="form-control" id="teacher-email-input" placeholder="Teacher's Email">
-                </div>
-                <button type="button" class="continue btn btn-primary btn-block" disabled>Send Results</button>
-            </div>
-        </div>
-        </script>
+    </div>
 
-        <!-- /templates -->
 
-        <!-- build:js scripts/vendor.js -->
-        <script src="bower_components/jquery/dist/jquery.js"></script>
-        <script src="bower_components/underscore/underscore.js"></script>
-        <script src="bower_components/backbone/backbone.js"></script>
-        <script src="bower_components/numeral/numeral.js"></script>
-        <!-- endbuild -->
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
 
-        <script>window.EarningCredit = window.EarningCredit || {};</script>
-
-        <!-- build:js({.tmp,app}) scripts/main.js -->
-        <script src="scripts/models/car.js"></script>
-        <script src="scripts/models/cars.js"></script>
-        <script src="scripts/models/interest-rate.js"></script>
-        <script src="scripts/models/question.js"></script>
-        <script src="scripts/models/student.js"></script>
-        <script src="scripts/models/survey.js"></script>
-        <script src="scripts/surveys/pre-survey.js"></script>
-        <script src="scripts/surveys/post-survey.js"></script>
-        <script src="scripts/views/conclusion.js"></script>
-        <script src="scripts/views/introduction.js"></script>
-        <script src="scripts/views/loan-selection.js"></script>
-        <script src="scripts/views/car.js"></script>
-        <script src="scripts/views/cars.js"></script>
-        <script src="scripts/views/question.js"></script>
-        <script src="scripts/views/survey.js"></script>
-        <script src="scripts/main.js"></script>
-        <script src="scripts/templates.js"></script>
-        <!-- endbuild -->
+    <!-- build:js scripts/main.js -->
+    <script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>
+    <!-- endbuild -->
 </body>
 </html>

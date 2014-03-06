@@ -1,32 +1,16 @@
-(function (EarningCredit) {
+/*global define*/
 
-  EarningCredit.CarsView = Backbone.View.extend({
+define([
+  'jquery',
+  'underscore',
+  'backbone',
+  'templates'
+], function ($, _, Backbone, JST) {
+  'use strict';
 
-    className: 'car-list',
-
-    events: {
-      'change input[type=radio]': 'selectLoan'
-    },
-
-    selectLoan: function () {
-      var selection = JSON.parse(decodeURI(this.$('input[type=radio]:checked').val()));
-      EarningCredit.Student.set('loanSelected', selection);
-    },
-
-    render: function () {
-      var view = this;
-
-      this.collection.each(function (car) {
-        var carView = new EarningCredit.CarView({ model: car });
-        view.$el.append(carView.render().el);
-      }, this);
-
-      return this;
-
-    }
-
+  var CarsView = Backbone.View.extend({
+    template: JST['app/scripts/templates/cars.ejs']
   });
 
-  EarningCredit.CarListView = new EarningCredit.CarsView({ collection: EarningCredit.CarList });
-
-})(EarningCredit);
+  return CarsView;
+});

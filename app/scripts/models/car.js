@@ -1,11 +1,15 @@
-(function (EarningCredit) {
-  
-  EarningCredit.Car = Backbone.Model.extend({
+/*global define*/
+
+define([
+  'underscore',
+  'backbone'
+], function (_, Backbone) {
+  'use strict';
+
+  var CarModel = Backbone.Model.extend({
     defaults: {
-      name: 'Car',
-      price: 15000,
-      description: 'A standard car.'
     }
   });
-  
-})(EarningCredit);
+
+  return CarModel;
+});

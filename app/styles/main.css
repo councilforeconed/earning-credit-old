@@ -1,34 +1,8 @@
 body {
-  margin: 40px auto;
+  background: #fafafa;
 }
 
-.question {
-  margin-bottom: 4em;
-}
-
-.question.has-error legend:after {
-  content: " (You must answer this question.)";
-  color: #A94448 !important;
-}
-
-.current-credit-score .panel-body, .conclusion .panel-body {
-  text-align: center;
-  font-size: 4rem;
-}
-
-tr.loan-information.disabled {
-  color: #999;
-  background-color: #F7F7F7;
-}
-
-tr.loan-information.disabled td.loan-credit-score:after {
-  content: " (Ineligible)"
-}
-
-tr.overbudget {
-  background-color: #FFECEC;
-}
-
-tr.overbudget td.loan-monthly-price:after {
-  content: " (Overbudget)";
+.hero-unit {
+  margin: 50px auto 0 auto;
+  width: 300px;
 }

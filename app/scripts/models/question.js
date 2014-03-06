@@ -1,9 +1,15 @@
-(function (EarningCredit) {
-  
-  EarningCredit.Question = Backbone.Model.extend({
+/*global define*/
+
+define([
+  'underscore',
+  'backbone'
+], function (_, Backbone) {
+  'use strict';
+
+  var QuestionModel = Backbone.Model.extend({
     defaults: {
-      points: 0
     }
   });
-  
-})(EarningCredit);
+
+  return QuestionModel;
+});
