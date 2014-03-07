@@ -4,11 +4,12 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'templates'
-], function ($, _, Backbone, JST) {
+  'templates',
+  'views/scene'
+], function ($, _, Backbone, JST, Scene) {
   'use strict';
 
-  var SurveyView = Backbone.View.extend({
+  var SurveyView = Scene.extend({
     template: JST['app/scripts/templates/survey.ejs'],
 
     tagName: 'form',
@@ -40,8 +41,12 @@ define([
     submissionIsValid: function () {
       var $questions = this.$('.question');
       return _.reduce($questions, function (result, question) {
-        if (!result) return false;
-        return result = !!$(question).find('input[type=radio]:checked').length;
+        if (!result) {
+          result = false;
+        } else {
+          result = !!$(question).find('input[type=radio]:checked').length;
+        }
+        return result;
       }, true);
     },
 
@@ -50,7 +55,7 @@ define([
       this.collection.each(function (question) {
         this.$el.append(question.view.render().el);
       }, this);
-      this.$el.append('<button type="button" class="submit-survey btn btn-primary btn-lg btn-block">Submit Survey</button>')
+      this.$el.append('<button type="button" class="submit-survey btn btn-primary btn-lg btn-block">Submit Survey</button>');
       return this;
     }
   });
