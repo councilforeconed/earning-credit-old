@@ -9,7 +9,8 @@
     "requirejs": "~2.1.5",
     "requirejs-text": "~2.0.5",
     "modernizr": "~2.6.2",
-    "numeral": "~1.5.3"
+    "numeral": "~1.5.3",
+    "flat-ui": "*"
   },
   "devDependencies": {}
 }

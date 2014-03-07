@@ -28,7 +28,8 @@ require.config({
 });
 
 require([
-  'backbone'
-], function (Backbone) {
-  Backbone.history.start();
+  'backbone',
+  'views/application'
+], function (Backbone, Application) {
+  window.Application = new Application();
 });
