@@ -28,8 +28,7 @@ require.config({
 });
 
 require([
-  'backbone',
-  'views/application'
-], function (Backbone, Application) {
-  window.Application = new Application();
+  'application'
+], function (Application) {
+  window.Application = Application;
 });
