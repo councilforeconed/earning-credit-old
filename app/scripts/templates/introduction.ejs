@@ -7,5 +7,27 @@
     <label for="student-id-input">Student ID Number</label>
     <input type="text" class="form-control student-id-input" placeholder="Student ID Number">
   </div>
-  <button type="button" class="continue btn btn-default btn-lg btn-block" disabled>Begin</button>
+  <div class="row">
+  <div class="col-md-6">
+      <div class="form-group credit-score-field hidden">
+        <label for="credit-score">Credit Score</label>
+        <input type="number" class="form-control credit-score" placeholder="Credit Score">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" class="has-credit-score" value="true"> I already have a credit score
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <button type="button" class="continue btn btn-default btn-lg btn-block" disabled>Looks good, let's begin.</button>
+    </div>
+    <div class="col-md-6">
+    <button type="button" class="clear-data btn btn-danger btn-lg btn-block" disabled>This isn't me. Start over!</button>
+    </div>
+  </div>
 </form>

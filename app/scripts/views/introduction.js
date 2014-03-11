@@ -4,18 +4,18 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'views/scene',
   'templates',
   'application'
-], function ($, _, Backbone, SceneView, JST, Application) {
+], function ($, _, Backbone, JST, Application) {
   'use strict';
 
-  var IntroductionScene = SceneView.extend({
+  var IntroductionScene = Backbone.View.extend({
     template: JST['app/scripts/templates/introduction.ejs'],
 
     events: {
       'keyup input': 'validateInputs',
-      'click .continue': 'nextScene'
+      'click .continue': 'nextScene',
+      'change input.has-credit-score': 'displayCreditScoreInput'
     },
 
     render: function() {
@@ -44,6 +44,14 @@ define([
         this.turnOnSubmitButton();
       } else {
         this.turnOffSubmitButton();
+      }
+    },
+
+    displayCreditScoreInput: function() {
+      if (this.$('.has-credit-score:checked').length) {
+        this.$('.credit-score-field').removeClass('hidden');
+      } else {
+        this.$('.credit-score-field').addClass('hidden');
       }
     },
 

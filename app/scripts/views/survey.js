@@ -6,11 +6,10 @@ define([
   'backbone',
   'templates',
   'application',
-  'views/scene'
-], function ($, _, Backbone, JST, Application, SceneView) {
+], function ($, _, Backbone, JST, Application) {
   'use strict';
 
-  var SurveyView = SceneView.extend({
+  var SurveyView = Backbone.View.extend({
     template: JST['app/scripts/templates/survey.ejs'],
 
     tagName: 'form',
