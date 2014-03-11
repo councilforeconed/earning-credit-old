@@ -4,8 +4,9 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'templates'
-], function ($, _, Backbone, JST) {
+  'models/student',
+  'templates',
+], function ($, _, Backbone, StudentModel, JST) {
   'use strict';
 
   var ApplicationView = Backbone.View.extend({
@@ -18,13 +19,18 @@ define([
     className: 'col-md-12',
 
     initialize: function () {
-      this.render();
+      this.student = new StudentModel();
     },
 
-    render: function () {
-      this.$el.html(this.template());
+    render: function (view) {
+      if (view) {
+        this.$el.html(view.render().el);
+      } else {
+        this.$el.html(this.template());
+      }
       return this;
     }
+
   });
 
   return ApplicationView;

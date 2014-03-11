@@ -11,8 +11,9 @@ define([
   var SurveyCollection = Backbone.Collection.extend({
     model: QuestionModel,
 
-    initialize: function() {
+    initialize: function(models, options) {
       this.view = new SurveyView({ collection: this });
+      this.type = options.type;
     },
 
     points: function () {

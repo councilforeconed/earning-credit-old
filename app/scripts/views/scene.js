@@ -1,18 +1,11 @@
 /*global define*/
 
 define([
-  'jquery',
-  'underscore',
   'backbone',
-  'templates'
-], function ($, _, Backbone) {
+], function (Backbone) {
   'use strict';
 
-  var SceneView = Backbone.View.extend({
-    isValid: function () {
-      return true;
-    }
-  });
+  var SceneView = Backbone.View.extend({});
 
   return SceneView;
 });

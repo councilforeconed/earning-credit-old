@@ -28,7 +28,11 @@ require.config({
 });
 
 require([
-  'application'
-], function (Application) {
+  'backbone',
+  'application',
+  'router',
+], function (Backbone, Application, Router) {
   window.Application = Application;
+  Application.router = new Router;
+  Backbone.history.start();
 });
