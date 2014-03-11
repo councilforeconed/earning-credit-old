@@ -13,20 +13,30 @@ define([
 
     tagName: 'fieldset',
 
-    className: 'question',
+    className: 'question panel panel-primary',
 
     events: {
       'change input': 'adjustPoints',
     },
 
-    adjustPoints: function (e) {
-      var points = this.$('input[type=radio]:checked').val();
-      this.model.set('points', parseInt(points, 10));
-      this.$el.removeClass('has-error').addClass('has-success');
+    adjustPoints: function () {
+      this.points = this.$('input[type=radio]:checked').val();
+      this.model.set('points', parseInt(this.points, 10));
+      this.$el
+        .removeClass('has-error')
+        .addClass('has-success')
+        .removeClass('panel-primary')
+        .addClass('panel-default');
+
     },
 
     render: function () {
       this.$el.html(this.template(this.model.toJSON()));
+
+      if (this.points) {
+        this.$(':radio[value=' + this.points +']').attr('checked', true);
+      }
+
       return this;
     }
   });

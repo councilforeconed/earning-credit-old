@@ -154,5 +154,5 @@ define([
     }
   ];
 
-  return new SurveyCollection(survey, { type: 'post-survey' });
+  return new SurveyCollection(survey, { type: 'postSurvey' });
 });

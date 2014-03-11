@@ -33,6 +33,6 @@ require([
   'router',
 ], function (Backbone, Application, Router) {
   window.Application = Application;
-  Application.router = new Router;
+  Application.router = new Router();
   Backbone.history.start();
 });

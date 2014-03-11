@@ -6,9 +6,8 @@ define([
   'backbone',
   'views/scene',
   'templates',
-  'application',
-  'surveys/pre-survey'
-], function ($, _, Backbone, SceneView, JST, Application, PreSurvey) {
+  'application'
+], function ($, _, Backbone, SceneView, JST, Application) {
   'use strict';
 
   var IntroductionScene = SceneView.extend({
@@ -21,14 +20,23 @@ define([
 
     render: function() {
       this.$el.html(this.template());
+
+      if (Application.student.has('name')) {
+        this.$('.first-name-input').val(Application.student.get('name'));
+      }
+
+      if (Application.student.has('name')) {
+        this.$('.student-id-input').val(Application.student.get('studentId'));
+      }
+
       return this;
     },
 
     validateInputs: function() {
       this.studentName = this.$('.first-name-input').val();
-      this.studentID = this.$('.student-id-input').val();
+      this.studentId = this.$('.student-id-input').val();
 
-      if (this.studentName && this.studentID) {
+      if (this.studentName && this.studentId) {
         this.$('.continue')
           .attr('disabled', false)
           .addClass('btn-primary');
@@ -44,7 +52,7 @@ define([
     nextScene: function() {
       Application.student.set({
         name: this.studentName,
-        id: this.studentID
+        studentId: this.studentId
       });
 
       Application.router.navigate('pre-survey', { trigger: true });

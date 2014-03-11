@@ -34,14 +34,20 @@ define([
     submitSurvey: function () {
       if (this.submissionIsValid()) {
         var type = this.collection.type;
-        Application.student[type] = this.collection.points;
-        if (type === 'pre-survey') {
+        Application.student.set(type, this.collection.points());
+        
+        if (type === 'preSurvey') {
           Application.router.navigate('/credit-score', { trigger: true });
-        } else if (type === 'post-survey') {
+        } else if (type === 'postSurvey') {
           Application.router.navigate('/', { trigger: true });
         } else {
           throw new Error('The survey submitted is neither a pre- or a post-survey. Weird.');
         }
+
+        // Disable all of the options upon submission.
+        // This way, students can't just hit back and change their answers.
+        // TODO: Store this data in sessionStorage so that refreshing doesn't help either.
+        this.$('.question').attr('disabled', true);
       } else {
         _.each(this.$('.question'), function (question) {
           var valid = !!$(question).find('input[type=radio]:checked').length;

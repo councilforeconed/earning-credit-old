@@ -7,11 +7,14 @@ define([
   'use strict';
 
   var StudentModel = Backbone.Model.extend({
-    defaults: {
-      loanTerm: 5
-    },
-    loanTermInMonths: function () {
-      return this.get('loanTerm') * 12;
+    initialize: function() {
+      if (sessionStorage.getItem('student')) {
+        this.set(JSON.parse(sessionStorage.getItem('student')));
+      }
+
+      this.on('change', function() {
+        sessionStorage.setItem('student', JSON.stringify(this.attributes));
+      }, this);
     }
   });
 

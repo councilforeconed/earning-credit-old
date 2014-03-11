@@ -1,9 +1,13 @@
-<legend><%= question %></legend>
-<% answers.forEach(function (answer) { %>
-	<div class="radio">
-		<label>
-			<input type="radio" name="<%= number %>" value="<%= answer.value %>">
-			<%= answer.text %>
-		</label>
-	</div>
-<% }); %>
+<div class="panel-heading">
+  <h3 class="panel-title"><%= question %></h3>
+</div>
+<div class="panel-body">
+  <% answers.forEach(function (answer) { %>
+    <div class="radio">
+      <label>
+        <input type="radio" name="<%= number %>" value="<%= answer.value %>">
+        <%= answer.text %>
+      </label>
+    </div>
+  <% }); %>
+</div>

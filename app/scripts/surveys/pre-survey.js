@@ -178,5 +178,5 @@ define([
     }
   ];
 
-  return new SurveyCollection(survey, { type: 'pre-survey' });
+  return new SurveyCollection(survey, { type: 'preSurvey' });
 });

@@ -18,7 +18,7 @@ define([
     },
 
     selectLoan: function () {
-      var selection = JSON.parse(decodeURI(this.$('input[type=radio]:checked').val()));
+      return JSON.parse(decodeURI(this.$('input[type=radio]:checked').val()));
     },
 
     render: function () {
