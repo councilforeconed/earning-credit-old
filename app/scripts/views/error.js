@@ -11,8 +11,18 @@ define([
   var ErrorView = Backbone.View.extend({
     template: JST['app/scripts/templates/error.ejs'],
 
+    events: {
+      'click .start-over': 'startOver'
+    },
+
     render: function() {
-      return this.template();
+      this.$el.html(this.template());
+      return this;
+    },
+
+    startOver: function() {
+      sessionStorage.removeItem('student');
+      Application.router.navigate('', {trigger: true})
     }
   });
 

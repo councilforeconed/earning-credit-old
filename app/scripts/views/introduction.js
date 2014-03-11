@@ -25,8 +25,12 @@ define([
         this.$('.first-name-input').val(Application.student.get('name'));
       }
 
-      if (Application.student.has('name')) {
+      if (Application.student.has('studentId')) {
         this.$('.student-id-input').val(Application.student.get('studentId'));
+      }
+
+      if (Application.student.has('name') && Application.student.has('studentId')) {
+        this.turnOnSubmitButton();
       }
 
       return this;
@@ -37,16 +41,24 @@ define([
       this.studentId = this.$('.student-id-input').val();
 
       if (this.studentName && this.studentId) {
-        this.$('.continue')
-          .attr('disabled', false)
-          .addClass('btn-primary');
-        this.isValid = true;
+        this.turnOnSubmitButton();
       } else {
-        this.$('.continue')
-          .attr('disabled', true)
-          .removeClass('btn-primary');
-        this.isValid = false;
+        this.turnOffSubmitButton();
       }
+    },
+
+    turnOnSubmitButton: function() {
+      this.$('.continue')
+        .attr('disabled', false)
+        .addClass('btn-primary');
+      this.isValid = true;
+    },
+
+    turnOffSubmitButton: function() {
+      this.$('.continue')
+        .attr('disabled', true)
+        .removeClass('btn-primary');
+      this.isValid = false;
     },
 
     nextScene: function() {
