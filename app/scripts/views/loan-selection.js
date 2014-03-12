@@ -6,12 +6,17 @@ define([
   'backbone',
   'templates',
   'collections/car',
-  'views/cars'
-], function ($, _, Backbone, JST, CarCollection, CarsView) {
+  'views/cars',
+  'application'
+], function ($, _, Backbone, JST, CarCollection, CarsView, Application) {
   'use strict';
 
   var LoanSelectionView = Backbone.View.extend({
     template: JST['app/scripts/templates/loan-selection.ejs'],
+
+    initialize: function() {
+      this.listenTo(Application.student, 'change:loan', this.enableSubmission);
+    },
 
     render: function() {
       // TODO: Define the cars somewhere else.
@@ -34,8 +39,22 @@ define([
       ]);
       var view = new CarsView({ collection: cars });
       this.$el.html(view.render().el);
+      this.$el.append(this.template());
+
+      if (Application.student.has('loan')) {
+        this.enableSubmission();
+      }
+
       return this;
+    },
+
+    enableSubmission: function() {
+      this.$('.onward')
+        .attr('disabled', false)
+        .addClass('btn-primary');
     }
+
+
   });
 
   return LoanSelectionView;

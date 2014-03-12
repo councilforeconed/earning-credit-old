@@ -12,6 +12,10 @@ define([
   var CreditScoreView = Backbone.View.extend({
     template: JST['app/scripts/templates/credit-score.ejs'],
 
+    events: {
+      'click .onward': 'continueToLoanSelection'
+    },
+
     render: function() {
       var score = Application.student.get('preSurveyPoints') || this.score;
       this.$el.html(this.template({
@@ -19,6 +23,10 @@ define([
         percentage: score * 850/100
       }));
       return this;
+    },
+
+    continueToLoanSelection: function() {
+      Application.router.navigate('loan-selection', {trigger: true});
     }
   });
 

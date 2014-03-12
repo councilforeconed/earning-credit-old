@@ -89,3 +89,26 @@ body {
     border-bottom: 0;
   }
 }
+
+
+tr.ineligible {
+  background-color: #F3F3F3;
+  color: #999;
+  td.score {
+    color: #990000;
+    &:after {
+      content: ' (You are not eligible for this loan.)'
+    }
+  }
+}
+
+tr.overbudget {
+  background-color: #F3F3F3;
+  color: #999;
+  td.payments {
+    color: #990000;
+    &:after {
+      content: ' (These payments are over your budget.)' 
+    }
+  }
+}

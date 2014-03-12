@@ -16,7 +16,7 @@ define([
     },
 
     initialize: function () {
-      var creditScores = [ 720, 690, 660, 630, 660, 570, 540, 510, 480, 300 ];
+      var creditScores = [ 720, 690, 660, 630, 570, 540, 510, 480, 300 ];
       var loans = _.map(creditScores, function (score) {
         return { 
           basePrice: this.get('price'),

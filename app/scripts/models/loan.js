@@ -45,13 +45,18 @@ define([
       return this.totalCost() / this.get('loanTermInMonths');
     },
 
+    _encoded: function() {
+      var json = _.clone(this.attributes);
+      return escape(JSON.stringify(json));
+    },
+
     toJSON: function () {
       var json = _.clone(this.attributes);
       json.basePrice = numeral(this.get('basePrice')).format('$0,[.]00');
       json.rate = this.rate() + '%';
       json.totalCost = numeral(this.totalCost()).format('$0,[.]00');
       json.monthlyPayments = numeral(this.monthlyPayments()).format('$0,[.]00');
-      json._encoded = encodeURI(JSON.stringify(json));
+      json._encoded = this._encoded;
       return json;
     }
   });

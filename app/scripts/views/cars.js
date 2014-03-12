@@ -4,22 +4,15 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'templates'
-], function ($, _, Backbone, JST) {
+  'templates',
+  'application'
+], function ($, _, Backbone, JST, Application) {
   'use strict';
 
   var CarsView = Backbone.View.extend({
     template: JST['app/scripts/templates/cars.ejs'],
 
     className: 'car-list',
-
-    events: {
-      'change input[type=radio]': 'selectLoan'
-    },
-
-    selectLoan: function () {
-      return JSON.parse(decodeURI(this.$('input[type=radio]:checked').val()));
-    },
 
     render: function () {
       this.collection.each(function (car) {

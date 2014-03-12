@@ -1,11 +1,11 @@
 <td>
 	<div class="radio">
-		<input type="radio" name="loan" value="<%= _encoded %>">
+		<input type="radio" name="loan" value="<%= _encoded %>" <%= Application.student.get('loan').monthlyPayments === monthlyPayments ? 'checked' : '' %>>
 	</div>
 </td>
-<td><%= basePrice %></td>
-<td><%= loanTermInMonths %></td>
-<td><%= rate %></td>
-<td><%= creditScore %></td>
-<td><%= totalCost %></td>
-<td><%= monthlyPayments %></td>
+<td class="price"><%= basePrice %></td>
+<td class="term"><%= loanTermInMonths %></td>
+<td class="rate"><%= rate %></td>
+<td class="score"><%= creditScore %></td>
+<td class="cost"><%= totalCost %></td>
+<td class="payments"><%= monthlyPayments %></td>
