@@ -27,6 +27,7 @@ define([
       this.collection.each(function (question) {
         this.$('.questions').append(question.view.render().el);
       }, this);
+      this.validateSurvey();
       return this;
     },
 

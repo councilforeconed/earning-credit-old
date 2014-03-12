@@ -12,10 +12,6 @@ define([
   var IntroductionScene = Backbone.View.extend({
     template: JST['app/scripts/templates/introduction.ejs'],
     
-    initialize: function () {
-      this.listenTo(Application.student, 'change', this.render);
-    },
-    
     events: {
       'keyup input': 'validateInputs',
       'click .continue': 'continueToSurvey',
@@ -40,16 +36,24 @@ define([
     },
 
     validateInputs: function() {
-      this.studentName = this.$('.first-name-input').val();
-      this.studentId = this.$('.student-id-input').val();
+      var studentName = this.$('.first-name-input').val();
+      var studentId = this.$('.student-id-input').val();
 
-      if (this.studentName && this.studentId) {
-        this.turnOnSubmitButton();
-        this.turnOnClearDataButton();
+      if (studentName && studentId) {
+        this.turnOnButtons();
       } else {
-        this.turnOffSubmitButton();
-        this.turnOffClearDataButton();
+        this.turnOffButtons();
       }
+    },
+
+    turnOnButtons: function() {
+      this.turnOnSubmitButton();
+      this.turnOnClearDataButton();
+    },
+
+    turnOffButtons: function() {
+      this.turnOffSubmitButton();
+      this.turnOffClearDataButton();
     },
 
     turnOnSubmitButton: function() {
@@ -77,9 +81,12 @@ define([
     },
 
     continueToSurvey: function() {
+      var studentName = this.$('.first-name-input').val();
+      var studentId = this.$('.student-id-input').val();
+
       Application.student.set({
-        name: this.studentName,
-        studentId: this.studentId
+        name: studentName,
+        studentId: studentId
       });
 
       Application.router.navigate('pre-survey', { trigger: true });
@@ -87,6 +94,7 @@ define([
     
     removeStudentData: function () {
       Application.student.clear();
+      this.render();
     }
   });
 

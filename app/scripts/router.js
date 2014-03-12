@@ -13,17 +13,18 @@ define(function(require, exports, module) {
       'error': 'error',
       'pre-survey': 'preSurvey',
       'credit-score': 'creditScore',
-      'credit-score/:score': 'creditScore',
+      'loan-selection': 'loanSelection',
+      'post-survey': 'postSurvey'
     },
 
     introduction: function() {
-      Application.IntroductionView = Application.IntroductionView || new (require('views/introduction'))();
-      Application.render(Application.IntroductionView);
+      var IntroductionView = require('views/introduction');
+      Application.render(new IntroductionView());
     },
 
     error: function() {
-      Application.ErrorView = Application.ErrorView || new (require('views/error'))();
-      Application.render(Application.ErrorView);
+      var ErrorView = new (require('views/error'))();
+      Application.render(new ErrorView());
     },
 
     preSurvey: function() {
@@ -32,17 +33,20 @@ define(function(require, exports, module) {
       Application.render(Application.PreSurvey.view);
     },
 
-    creditScore: function(score) {
+    creditScore: function() {
       var CreditScoreView = require('views/credit-score');
-      Application.CreditScoreView = Application.CreditScoreView || new CreditScoreView();
+      Application.render(new CreditScoreView());
+    },
 
-      if (score) { Application.CreditScoreView.score = score; }
+    loanSelection: function() {
+      var LoanSelectionView = require('views/loan-selection');
+      Application.render(new LoanSelectionView());
+    },
 
-      if (!score && !Application.student.has('preSurvey')) {
-        this.navigate('error', { trigger: true });
-      } else {
-        Application.render(Application.CreditScoreView);
-      }
+    postSurvey: function() {
+      var PostSurvey = require('surveys/post-survey');
+      Application.PostSurvey = Application.PostSurvey || PostSurvey;
+      Application.render(Application.PostSurvey.view);
     }
   });
 
