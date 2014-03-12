@@ -13,7 +13,7 @@ define([
     template: JST['app/scripts/templates/credit-score.ejs'],
 
     render: function() {
-      var score = Application.student.get('preSurvey') || this.score;
+      var score = Application.student.get('preSurveyPoints') || this.score;
       this.$el.html(this.template({
         score: score,
         percentage: score * 850/100

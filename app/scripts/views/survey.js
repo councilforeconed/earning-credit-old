@@ -33,7 +33,8 @@ define([
     submitSurvey: function () {
       if (this.submissionIsValid()) {
         var type = this.collection.type;
-        Application.student.set(type, this.collection.points());
+        Application.student.set(type + 'Points', this.collection.points());
+        Application.student.set(type, this.collection.toJSON());
         
         if (type === 'preSurvey') {
           Application.router.navigate('/credit-score', { trigger: true });
