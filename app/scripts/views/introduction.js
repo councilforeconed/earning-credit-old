@@ -11,28 +11,31 @@ define([
 
   var IntroductionScene = Backbone.View.extend({
     template: JST['app/scripts/templates/introduction.ejs'],
-
+    
+    initialize: function () {
+      this.listenTo(Application.student, 'change', this.render);
+    },
+    
     events: {
       'keyup input': 'validateInputs',
-      'click .continue': 'nextScene',
-      'change input.has-credit-score': 'displayCreditScoreInput'
+      'click .continue': 'continueToSurvey',
+      'click .clear-data': 'removeStudentData'
     },
 
     render: function() {
       this.$el.html(this.template());
 
-      if (Application.student.has('name')) {
-        this.$('.first-name-input').val(Application.student.get('name'));
-      }
-
-      if (Application.student.has('studentId')) {
-        this.$('.student-id-input').val(Application.student.get('studentId'));
-      }
+      // Fill in the form with data from the student model.
+      // If this data doesn't exist, then these values will be `undefined`,
+      // which is fine.
+      this.$('.first-name-input').val(Application.student.get('name'));
+      this.$('.student-id-input').val(Application.student.get('studentId'));
 
       if (Application.student.has('name') && Application.student.has('studentId')) {
         this.turnOnSubmitButton();
+        this.turnOnClearDataButton();
       }
-
+      
       return this;
     },
 
@@ -42,16 +45,10 @@ define([
 
       if (this.studentName && this.studentId) {
         this.turnOnSubmitButton();
+        this.turnOnClearDataButton();
       } else {
         this.turnOffSubmitButton();
-      }
-    },
-
-    displayCreditScoreInput: function() {
-      if (this.$('.has-credit-score:checked').length) {
-        this.$('.credit-score-field').removeClass('hidden');
-      } else {
-        this.$('.credit-score-field').addClass('hidden');
+        this.turnOffClearDataButton();
       }
     },
 
@@ -68,14 +65,28 @@ define([
         .removeClass('btn-primary');
       this.isValid = false;
     },
+    
+    turnOnClearDataButton: function() {
+      this.$('.clear-data')
+        .attr('disabled', false)
+    },
+    
+    turnOffClearDataButton: function() {
+      this.$('.clear-data')
+        .attr('disabled', true)
+    },
 
-    nextScene: function() {
+    continueToSurvey: function() {
       Application.student.set({
         name: this.studentName,
         studentId: this.studentId
       });
 
       Application.router.navigate('pre-survey', { trigger: true });
+    },
+    
+    removeStudentData: function () {
+      Application.student.clear();
     }
   });
 
