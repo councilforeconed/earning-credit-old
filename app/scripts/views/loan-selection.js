@@ -18,6 +18,10 @@ define([
       this.listenTo(Application.student, 'change:loan', this.enableSubmission);
     },
 
+    events: {
+      'click .onward': 'continueToLoanSummary'
+    },
+
     render: function() {
       // TODO: Define the cars somewhere else.
       var cars = new CarCollection([
@@ -52,8 +56,11 @@ define([
       this.$('.onward')
         .attr('disabled', false)
         .addClass('btn-primary');
-    }
+    },
 
+    continueToLoanSummary: function() {
+      Application.router.navigate('loan-summary', { trigger: true });
+    }
 
   });
 

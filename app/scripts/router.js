@@ -14,6 +14,7 @@ define(function(require, exports, module) {
       'pre-survey': 'preSurvey',
       'credit-score': 'creditScore',
       'loan-selection': 'loanSelection',
+      'loan-summary': 'loanSummary',
       'post-survey': 'postSurvey'
     },
 
@@ -43,7 +44,12 @@ define(function(require, exports, module) {
       Application.render(new LoanSelectionView());
     },
 
-    postSurvey: function() {
+    loanSummary: function() {
+      var LoanSummaryView = require('views/loan-summary');
+      Application.render(new LoanSummaryView());
+    },
+
+    postSurvey: function () {
       var PostSurvey = require('surveys/post-survey');
       Application.PostSurvey = Application.PostSurvey || PostSurvey;
       Application.render(Application.PostSurvey.view);

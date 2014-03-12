@@ -1,6 +1,6 @@
 <td>
 	<div class="radio">
-		<input type="radio" name="loan" value="<%= _encoded %>" <%= Application.student.get('loan').monthlyPayments === monthlyPayments ? 'checked' : '' %>>
+		<input type="radio" name="loan" <%= _selected ? 'checked' : '' %>>
 	</div>
 </td>
 <td class="price"><%= basePrice %></td>

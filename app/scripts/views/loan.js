@@ -23,7 +23,7 @@ define([
     },
 
     selectLoan: function () {
-      Application.student.set('loan', this.model);
+      Application.student.set('loan', this.model.toJSON());
     },
 
     render: function() {
@@ -36,12 +36,7 @@ define([
 
       if (this.model.monthlyPayments() > 450) {
         this.$el.addClass('overbudget');
-        this.$('input[type=radio]').attr('disabled', true); 
-      }
-
-      if (Application.student.get('loan').cid === this.model.cid) {
-        debugger;
-        this.$('input[type=radio]').attr('checked', true); 
+        this.$('input[type=radio]').attr('disabled', true);
       }
 
       return this;

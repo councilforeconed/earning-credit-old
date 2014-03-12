@@ -12,11 +12,15 @@ define([
     defaults: {
       basePrice: 15000,
       loanTermInMonths: 60,
-      creditScore: 500
+      creditScore: 500,
+      _selected: false
     },
 
     initialize: function() {
       this.view = new LoanView({ model: this });
+
+      var stored = Application.student.get('loan') && Application.student.get('loan').monthlyPayments;
+      this.set('_selected', stored === this.toJSON().monthlyPayments);
     },
 
     rate: function () {
@@ -56,7 +60,6 @@ define([
       json.rate = this.rate() + '%';
       json.totalCost = numeral(this.totalCost()).format('$0,[.]00');
       json.monthlyPayments = numeral(this.monthlyPayments()).format('$0,[.]00');
-      json._encoded = this._encoded;
       return json;
     }
   });
