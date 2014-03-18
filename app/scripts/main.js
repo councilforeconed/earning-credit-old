@@ -30,7 +30,7 @@ require.config({
 require([
   'backbone',
   'application',
-  'router',
+  'router'
 ], function (Backbone, Application, Router) {
   window.Application = Application;
   Application.router = new Router();
