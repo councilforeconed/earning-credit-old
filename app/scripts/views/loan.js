@@ -34,10 +34,12 @@ define([
         this.$('input[type=radio]').attr('disabled', true);
       }
 
-      if (this.model.monthlyPayments() > 450) {
-        this.$el.addClass('overbudget');
-        this.$('input[type=radio]').attr('disabled', true);
-      }
+      // Right now, Martha and Mush only want one car listed. So it doesn't
+      // make sense to enforce a budget.
+      // if (this.model.monthlyPayments() > 450) {
+      //   this.$el.addClass('overbudget');
+      //   this.$('input[type=radio]').attr('disabled', true);
+      // }
 
       return this;
     }

@@ -15,36 +15,38 @@ define(function(require, exports, module) {
       'credit-score': 'creditScore',
       'loan-selection': 'loanSelection',
       'loan-summary': 'loanSummary',
-      'post-survey': 'postSurvey'
+      'post-survey': 'postSurvey',
+      'post-credit-score': 'postCreditScore'
     },
 
-    introduction: function() {
+    introduction: function () {
       var IntroductionView = require('views/introduction');
       Application.render(new IntroductionView());
     },
 
-    error: function() {
+    error: function () {
       var ErrorView = new (require('views/error'))();
       Application.render(new ErrorView());
     },
 
-    preSurvey: function() {
+    preSurvey: function () {
       var PreSurvey = require('surveys/pre-survey');
       Application.PreSurvey = Application.PreSurvey || PreSurvey;
       Application.render(Application.PreSurvey.view);
+      // TODO: Figure out a way to fill out the survey based on the preSurvey model.
     },
 
-    creditScore: function() {
+    creditScore: function () {
       var CreditScoreView = require('views/credit-score');
       Application.render(new CreditScoreView());
     },
 
-    loanSelection: function() {
+    loanSelection: function () {
       var LoanSelectionView = require('views/loan-selection');
       Application.render(new LoanSelectionView());
     },
 
-    loanSummary: function() {
+    loanSummary: function () {
       var LoanSummaryView = require('views/loan-summary');
       Application.render(new LoanSummaryView());
     },
@@ -53,7 +55,12 @@ define(function(require, exports, module) {
       var PostSurvey = require('surveys/post-survey');
       Application.PostSurvey = Application.PostSurvey || PostSurvey;
       Application.render(Application.PostSurvey.view);
-    }
+    },
+
+    postCreditScore: function () {
+      var CreditScoreView = require('views/post-credit-score');
+      Application.render(new CreditScoreView());
+    },
   });
 
   module.exports = Router;

@@ -27,6 +27,7 @@ define([
       this.collection.each(function (question) {
         this.$('.questions').append(question.view.render().el);
       }, this);
+      this.delegateEvents(this.events);
       this.validateSurvey();
       return this;
     },
@@ -40,7 +41,7 @@ define([
         if (type === 'preSurvey') {
           Application.router.navigate('/credit-score', { trigger: true });
         } else if (type === 'postSurvey') {
-          Application.router.navigate('/', { trigger: true });
+          Application.router.navigate('/post-credit-score', { trigger: true });
         } else {
           throw new Error('The survey submitted is neither a pre- or a post-survey. Weird.');
         }

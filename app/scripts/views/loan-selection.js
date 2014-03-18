@@ -26,17 +26,7 @@ define([
       // TODO: Define the cars somewhere else.
       var cars = new CarCollection([
         {
-          name: 'Ol\' Rusty (Jalopy)',
-          price: 10000,
-          description: 'It has four wheels and it\'s pretty much held together by rust. Good luck with this one.'
-        },
-        {
-          name: 'A Standard Four-Door Sedan',
-          price: 15000,
-          description: 'A standard, respectable car. It will get you where you\'re going.'
-        },
-        {
-          name: 'A Luxury Vehicle',
+          name: 'A Car',
           price: 20000,
           description: 'A very classy car for a very class person.'
         }
@@ -59,6 +49,7 @@ define([
     },
 
     continueToLoanSummary: function() {
+
       Application.router.navigate('loan-summary', { trigger: true });
     }
 
