@@ -18,10 +18,12 @@ define([
     initialize: function () {
       var creditScores = [ 720, 690, 660, 630, 570, 540, 510, 480, 300 ];
       var loans = _.map(creditScores, function (score) {
-        return { 
+        var loanInformation = { 
           basePrice: this.get('price'),
-          creditScore: score
-        }
+          creditScore: score,
+          car: this.toJSON()
+        };
+        return loanInformation;
       }, this);
       this.loans = new LoanCollection(loans);
       this.view = new CarView({ model: this });
