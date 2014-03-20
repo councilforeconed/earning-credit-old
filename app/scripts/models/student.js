@@ -12,8 +12,14 @@ define([
 
       this.bind('change',function() {
         if (this.hasChanged('_id')) {
-          Application.continuationCode.render();
-          this.fetch({ redirect: true });
+          if (this.has('_id')) {
+            Application.continuationCode.render();
+            this.fetch({ redirect: true });
+          } else {
+            Application.continuationCode.render();
+            Application.render('introduction');
+            Application.router.navigate('');
+          }
         } else {
           if (!this.has('_id')) {
             this.generateID();

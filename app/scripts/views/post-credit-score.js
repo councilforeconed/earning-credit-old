@@ -36,9 +36,8 @@ define([
     },
 
     startOver: function () {
-      Application.student = new StudentModel();
-      Application.router.navigate('/');
-      Application.render('introduction');
+      Application.student.clear();
+      Application.continuationCode.render();
     }
 
   });

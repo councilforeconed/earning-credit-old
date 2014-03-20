@@ -12,7 +12,11 @@ define([
     el: '#continuation-code',
 
     render: function () {
-      this.$el.html(this.template(Application.student.toJSON()));
+      if (Application.student.has('_id')) {
+        this.$el.html(this.template(Application.student.toJSON()));
+      } else {
+        this.$el.html('');
+      }
       
       return this;
     }
