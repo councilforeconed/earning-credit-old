@@ -5,37 +5,40 @@ define([
   'underscore',
   'backbone',
   'templates',
-  'collections/car',
-  'views/cars',
-  'application'
-], function ($, _, Backbone, JST, CarCollection, CarsView, Application) {
+  'models/car'
+], function ($, _, Backbone, JST, CarModel) {
   'use strict';
 
   var LoanSelectionView = Backbone.View.extend({
     template: JST['app/scripts/templates/loan-selection.ejs'],
 
     initialize: function() {
-      this.listenTo(Application.student, 'change:loan', this.enableSubmission);
+      // TODO: Implement
+      // this.listenTo(Application.student, 'change:loan', this.enableSubmission);
     },
 
     events: {
-      'click .onward': 'continueToLoanSummary'
+      'click .onward': 'continueToLoanSummary',
+      'change input[name=loan]': 'enableSubmission'
     },
 
     render: function() {
       // TODO: Define the cars somewhere else.
-      var cars = new CarCollection([
+      // An earlier version of this application allowed thst student to select
+      // from multiple cars. We're not doing this anymore, but the original
+      // architecture has been left in place. For now, it's simply a collection
+      // with only one model in it.
+      var car = new CarModel(
         {
-          name: 'A Car',
+          name: 'A sensible car for a sensible person',
           price: 20000,
           description: 'A very classy car for a very class person.'
         }
-      ]);
-      var view = new CarsView({ collection: cars });
-      this.$el.html(view.render().el);
+      );
+      this.$el.html(car.view.render().el);
       this.$el.append(this.template());
 
-      if (Application.student.has('loan')) {
+      if ($('input[name=loan]:checked').length || Application.student.get('loan')) {
         this.enableSubmission();
       }
 
@@ -43,14 +46,16 @@ define([
     },
 
     enableSubmission: function() {
-      this.$('.onward')
-        .attr('disabled', false)
-        .addClass('btn-primary');
+      if (Application.student.get('loan')) {
+        this.$('.onward')
+          .attr('disabled', false)
+          .addClass('btn-primary');
+      }
     },
 
     continueToLoanSummary: function() {
-
-      Application.router.navigate('loan-summary', { trigger: true });
+      Application.student.set({scene: 'loan-summary'});
+      Application.render('loanSummary');
     }
 
   });
