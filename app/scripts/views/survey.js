@@ -1,12 +1,11 @@
-/*global define*/
+/*global define, Application*/
 
 define([
   'jquery',
   'underscore',
   'backbone',
-  'templates',
-  'application',
-], function ($, _, Backbone, JST, Application) {
+  'templates'
+], function ($, _, Backbone, JST) {
   'use strict';
 
   var SurveyView = Backbone.View.extend({
@@ -35,13 +34,15 @@ define([
     submitSurvey: function () {
       if (this.submissionIsValid()) {
         var type = this.collection.type;
-        Application.student.set(type + 'Points', this.collection.points());
-        Application.student.set(type, this.collection.toJSON());
-        
+        var surveyResults = {};
+        surveyResults[type + 'Points'] = this.collection.points();
+        surveyResults[type] = this.collection.toJSON();
         if (type === 'preSurvey') {
-          Application.router.navigate('/credit-score', { trigger: true });
+          Application.student.set(_.extend(surveyResults, {scene: 'credit-score'}));
+          Application.render('creditScore');
         } else if (type === 'postSurvey') {
-          Application.router.navigate('/post-credit-score', { trigger: true });
+          Application.student.set(_.extend(surveyResults, {scene: 'post-credit-score'}));
+          Application.render('postCreditScore');
         } else {
           throw new Error('The survey submitted is neither a pre- or a post-survey. Weird.');
         }

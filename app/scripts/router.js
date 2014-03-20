@@ -10,7 +10,8 @@ define(function(require, exports, module) {
 
     routes: {
       '': 'introduction',
-      'error': 'error',
+      'student(/:student)': 'loadStudent',
+      'error(/:error)': 'error',
       'pre-survey': 'preSurvey',
       'credit-score': 'creditScore',
       'loan-selection': 'loanSelection',
@@ -20,49 +21,54 @@ define(function(require, exports, module) {
     },
 
     introduction: function () {
-      var IntroductionView = require('views/introduction');
-      Application.render(new IntroductionView());
+      Application.render('introduction');
     },
 
-    error: function () {
-      var ErrorView = new (require('views/error'))();
-      Application.render(new ErrorView());
+    loadStudent: function (student) {
+      Application.student.set('_id', student);
+    },
+
+    error: function (error) {
+      Application.render('error', { error: error });
     },
 
     preSurvey: function () {
-      var PreSurvey = require('surveys/pre-survey');
-      Application.PreSurvey = Application.PreSurvey || PreSurvey;
-      Application.render(Application.PreSurvey.view);
-      // TODO: Figure out a way to fill out the survey based on the preSurvey model.
+      if (!Application.student.has('_rev')) { this.navigate('/', {trigger: true}); }
+      Application.render('preSurvey');
+      this.navigate('student/' + Application.student.get('_id'));
     },
 
     creditScore: function () {
-      var CreditScoreView = require('views/credit-score');
-      Application.render(new CreditScoreView());
+      if (!Application.student.has('_rev')) { this.navigate('/', {trigger: true}); }
+      Application.render('creditScore');
+      this.navigate('student/' + Application.student.get('_id'));
     },
 
     loanSelection: function () {
-      var LoanSelectionView = require('views/loan-selection');
-      Application.render(new LoanSelectionView());
+      if (!Application.student.has('_rev')) { this.navigate('/', {trigger: true}); }
+      Application.render('loanSelection');
+      this.navigate('student/' + Application.student.get('_id'));
     },
 
     loanSummary: function () {
-      var LoanSummaryView = require('views/loan-summary');
-      Application.render(new LoanSummaryView());
+      if (!Application.student.has('_rev')) { this.navigate('/', {trigger: true}); }
+      Application.render('loanSummary');
+      this.navigate('student/' + Application.student.get('_id'));
     },
 
     postSurvey: function () {
-      var PostSurvey = require('surveys/post-survey');
-      Application.PostSurvey = Application.PostSurvey || PostSurvey;
-      Application.render(Application.PostSurvey.view);
+      if (!Application.student.has('_rev')) { this.navigate('/', {trigger: true}); }
+      Application.render('postSurvey');
+      this.navigate('student/' + Application.student.get('_id'));
     },
 
     postCreditScore: function () {
-      var CreditScoreView = require('views/post-credit-score');
-      Application.render(new CreditScoreView());
-    },
+      if (!Application.student.has('_rev')) { this.navigate('/', {trigger: true}); }
+      Application.render('postCreditScore');
+      this.navigate('student/' + Application.student.get('_id'));
+    }
+
   });
 
   module.exports = Router;
-
 });

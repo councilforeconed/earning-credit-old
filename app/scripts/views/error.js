@@ -1,4 +1,4 @@
-/*global define*/
+/*global define, Application*/
 
 define([
   'jquery',
@@ -15,14 +15,19 @@ define([
       'click .start-over': 'startOver'
     },
 
-    render: function() {
+    render: function(options) {
       this.$el.html(this.template());
+      console.log(options);
+      if (options.error === 404) {
+        this.$('.error-reason').text('That\'s not a valid continuation code. Try again (or you can start over with as a new student)!');
+      }
       return this;
     },
 
     startOver: function() {
       sessionStorage.removeItem('student');
-      Application.router.navigate('', {trigger: true})
+      Application.render('introduction');
+      Application.router.navigate('');
     }
   });
 

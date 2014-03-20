@@ -4,9 +4,8 @@ define([
   'jquery',
   'underscore',
   'backbone',
-  'templates',
-  'application'
-], function ($, _, Backbone, JST, Application) {
+  'templates'
+], function ($, _, Backbone, JST) {
   'use strict';
 
   var CarsView = Backbone.View.extend({

@@ -1,12 +1,11 @@
-/*global define*/
+/*global define, Application*/
 
 define([
   'jquery',
   'underscore',
   'backbone',
-  'templates',
-  'application'
-], function ($, _, Backbone, JST, Application) {
+  'templates'
+], function ($, _, Backbone, JST) {
   'use strict';
 
   var LoanSummaryView = Backbone.View.extend({
@@ -24,8 +23,8 @@ define([
     },
 
     continueToPostSurvey: function () {
-      console.log('Move on to post survey.');
-      Application.router.navigate('/post-survey', { trigger: true });
+      Application.student.set({scene: 'post-survey'});
+      Application.render('postSurvey');
     }
   });
 

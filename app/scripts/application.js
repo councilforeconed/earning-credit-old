@@ -1,11 +1,9 @@
 /*global define*/
 
-define([
-  'views/application'
-], function (ApplicationView) {
+define(function(require, exports, module) {
   'use strict';
 
-  var Application = new ApplicationView();
+  var ApplicationView = require('views/application');
 
-  return Application;
+  module.exports = new ApplicationView();
 });

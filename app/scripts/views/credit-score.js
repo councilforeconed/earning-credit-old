@@ -1,12 +1,11 @@
-/*global define*/
+/*global define, Application*/
 
 define([
   'jquery',
   'underscore',
   'backbone',
-  'templates',
-  'application'
-], function ($, _, Backbone, JST, Application) {
+  'templates'
+], function ($, _, Backbone, JST) {
   'use strict';
 
   var CreditScoreView = Backbone.View.extend({
@@ -26,7 +25,8 @@ define([
     },
 
     continueToLoanSelection: function() {
-      Application.router.navigate('loan-selection', {trigger: true});
+      Application.render('loanSelection');
+      Application.router.navigate('loan-selection');
     }
   });
 
