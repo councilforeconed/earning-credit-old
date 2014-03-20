@@ -13,7 +13,6 @@ define([
       this.bind('change',function() {
         if (this.hasChanged('_id')) {
           if (this.has('_id')) {
-            Application.continuationCode.render();
             this.fetch({ redirect: true });
           } else {
             Application.continuationCode.render();
@@ -48,6 +47,7 @@ define([
             model.set(resp, {silent: true});
             if (options.redirect) {
               Application.router.navigate(resp.scene, {trigger: true});
+              Application.continuationCode.render();
             }
           })
           .fail(function (resp) {
@@ -68,6 +68,7 @@ define([
           contentType: 'application/json'
         }).done(function(resp) {
           Application.router.navigate('student/' + model.get('_id'));
+          Application.continuationCode.render();
           model.set('_rev', resp.rev, {silent: true});
         });
       }
