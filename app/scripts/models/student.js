@@ -56,7 +56,6 @@ define([
       }
 
       if (method === 'create') {
-        console.log('I am going to try to put this into the database:', model.attributes);
         if (!model.has('_id')) {
           model.generateID();
         }
