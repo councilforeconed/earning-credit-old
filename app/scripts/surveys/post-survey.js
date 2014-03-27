@@ -90,34 +90,34 @@ define([
     },
     {
       'number': '4',
-      'question': 'Imagine you are 30 years old. How many of the following accounts do you have currently have?',
+      'question': 'Imagine you are 30 years old. How many of the following accounts do you have currently have: Credit cards, mortgages, retail finance, auto loans, student loans, other loans?',
       'answers': [
         {
-          'text': '1 of each type',
+          'text': '1 of each (all six types)',
           'value': 55
         },
         {
-          'text': '5 types checked',
+          'text': '5 of the six types',
           'value': 50
         },
         {
-          'text': '4 types checked',
+          'text': '4 of the six types',
           'value': 40
         },
         {
-          'text': '3 types checked',
+          'text': '3 of the six types',
           'value': 30
         },
         {
-          'text': '2 types checked',
+          'text': '2 of the six types',
           'value': 20
         },
         {
-          'text': '1 type checked',
+          'text': '1 of the six types',
           'value': 10
         },
         {
-          'text': '0 types checked',
+          'text': '0 of the six types',
           'value': 0
         }
       ]
