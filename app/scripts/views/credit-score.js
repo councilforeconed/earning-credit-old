@@ -26,7 +26,7 @@ define([
 
     continueToLoanSelection: function() {
       Application.render('loanSelection');
-      Application.router.navigate('loan-selection');
+      Application.student.set({scene: 'loan-selection'});
     }
   });
 

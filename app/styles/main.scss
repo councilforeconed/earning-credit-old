@@ -13,6 +13,7 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 body {
   padding-top: 20px;
   padding-bottom: 20px;
+  background-color: rgb(241, 242, 237);
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -90,7 +91,6 @@ body {
   }
 }
 
-
 tr.ineligible {
   background-color: #F3F3F3;
   color: #999;
@@ -111,4 +111,17 @@ tr.overbudget {
       content: ' (These payments are over your budget.)' 
     }
   }
+}
+
+.illustration {
+  margin: 0.5rem auto;
+  width: 100%;
+}
+
+.jumbotron {
+  background-color: rgba(252, 255, 250,0.5);
+}
+
+.continuation-button {
+  margin-top: 1em;
 }
