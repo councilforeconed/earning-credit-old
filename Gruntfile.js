@@ -27,6 +27,7 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     yeoman: yeomanConfig,
+    pkg: grunt.file.readJSON('package.json'),
     watch: {
       options: {
         nospawn: true,
@@ -301,6 +302,13 @@ module.exports = function (grunt) {
           ]
         }
       }
+    },
+    exec: {
+      deploy: {
+        command: 'scp -r dist/* cee:~/technology/<%= pkg.name %>',
+        stdout: true,
+        stderr: true
+      }
     }
   });
 
@@ -312,7 +320,7 @@ module.exports = function (grunt) {
     grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
     grunt.task.run(['serve:' + target]);
   });
-
+  
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'open:server', 'connect:dist:keepalive']);
@@ -381,6 +389,11 @@ module.exports = function (grunt) {
     'copy',
     'rev',
     'usemin'
+  ]);
+  
+  grunt.registerTask('deploy', [
+    'build',
+    'exec:deploy'
   ]);
 
   grunt.registerTask('default', [
