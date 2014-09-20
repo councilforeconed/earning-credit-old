@@ -1,9 +1,9 @@
 $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,300);
+@import './colors.scss';
 @import 'sass-bootstrap/lib/bootstrap';
 @import './fonts.scss';
-@import './colors.scss';
 @import './header.scss';
 
 .browsehappy {
@@ -131,9 +131,4 @@ tr.overbudget {
 
 .btn {
   border-radius: 0;
-}
-
-.btn-primary {
-  background-color: $ocean;
-  border-color: darken($ocean, 10);
 }
